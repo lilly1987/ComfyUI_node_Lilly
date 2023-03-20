@@ -14,6 +14,16 @@ a{__b__|{c|}|{__d__|e|}|f|}g____ __my__
 - to
 aeg __quality_my__, __breasts__, { |__character_dress__|__dress_my__}, __shoulder__, {high heels,| } {choker,| } {<lora:__lora_lst__:__rora_num__>,| } NSFW, __NSFW_my__, { |__style_my__,}
 
+```
+ex : {3$$a1|{b2|c3|}|d4|{-$$|f|g}|{-2$$h||i}|{1-$$j|k|}}/{$$l|m|}/{0$$n|}
+{1|2|3} -> 1 or 2 or 3
+{2$$a|b|c} -> a,b or b,c or c,a or bb or ....
+{9$$a|b|c} ->  {3$$a|b|c} auto fix max count
+{1-2$$a|b|c} -> 1~2 random choise
+{-2$$a|b|c} -> {0-2$$a|b|c}  0-2
+{1-$$a|b|c} -> {0-3$$a|b|c}  1-max
+{-$$a|b|c} -> {0-3$$a|b|c}  0-max
+```
 
 ### run sample
 
