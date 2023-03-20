@@ -1,2 +1,2 @@
-# ComfyUI_node_Lilly
+# ComfyUI-node-Lilly
  
