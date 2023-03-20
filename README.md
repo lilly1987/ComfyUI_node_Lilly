@@ -1,7 +1,7 @@
 # ComfyUI-node-Lilly
 
 ## install
-ComfyUI_windows_portable\ComfyUI\custom_nodes 에 넣기
+ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI_node_Lilly
 
 
 ## wildcards
