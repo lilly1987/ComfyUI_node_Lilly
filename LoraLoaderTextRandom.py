@@ -52,7 +52,7 @@ class LoraLoaderTextRandom:
             model_lora, clip_lora = comfy.sd.load_lora_for_models(model, clip, lora_path, strength_model, strength_clip)
             return (model_lora, clip_lora)
         except Exception as e:
-            print("LoraLoaderTextRandom Exception : "+ e)
+            print(f"LoraLoaderTextRandom Exception : {e}" )
             return (strength_model, strength_clip)
 
 #NODE_CLASS_MAPPINGS = {
