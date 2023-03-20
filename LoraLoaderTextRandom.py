@@ -46,7 +46,7 @@ class LoraLoaderTextRandom:
         lora_path =check_name_pt("loras",name_split_choice(lora_name))
         if lora_path is None:
             print(f"LoraLoaderTextRandom : {lora_name} is none")
-            return (model_lora, clip_lora)
+            return (model, clip)
         print(f"LoraLoaderTextRandom : {lora_path} ")
         try:
             model_lora, clip_lora = comfy.sd.load_lora_for_models(model, clip, lora_path, strength_model, strength_clip)
@@ -55,7 +55,7 @@ class LoraLoaderTextRandom:
             print(f"LoraLoaderTextRandom Exception : {e}" )
             err_msg = traceback.format_exc()
             print(err_msg)
-            return (strength_model, strength_clip)
+            return (model, clip)
 
 #NODE_CLASS_MAPPINGS = {
 #    "LoraLoaderTextRandom": LoraLoaderTextRandom,
