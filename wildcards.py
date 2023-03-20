@@ -6,10 +6,27 @@ import re
 print("wildcards")
 #print(os.getcwd())
 
+#mn=os.path.abspath(__main__)
+#print("nm ", mn)
+#
+#filePath = __file__
+#print("This script file path is ", filePath)
+#
+#absFilePath = os.path.abspath(__file__)
+#print("This script absolute path is ", absFilePath)
+#
+#realFilePath = os.path.realpath(__file__)
+#print("This script real path is ", realFilePath)
+#
+#path, filename = os.path.split(absFilePath)
+#print("Script file path is {}, filename is {}".format(path, filename))
+
+
 # ============================================================
 
 # 가져올 파일 목록
-card_path=os.path.dirname(__file__)+"\\wildcards\\**\\*.txt"
+card_path=os.path.dirname(__file__)+"\\..\\..\\wildcards\\**\\*.txt"
+#card_path=f"{os.getcwd()}\\wildcards\\**\\*.txt"
 print(f"wildcards card_path {card_path}")
 
 # 정규식
