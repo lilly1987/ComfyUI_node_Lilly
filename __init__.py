@@ -1,5 +1,11 @@
-from .Colors import cprint, Colors as Colors
 import os
+#from ComfyUI_script import mypath
+
+print(f"init __name__ {__name__}")
+print(f"init __file__ {os.path.splitext(os.path.basename(__file__))[0]}")
+
+from .Colors import cprint, Colors as Colors
+
 py_name=os.path.basename(__file__)
 cprint(py_name, Colors.BLUE)
 
@@ -53,6 +59,8 @@ if not md.startswith("custom_nodes."):
         except Exception as e:         
             cprint(f"Load fail : {name}",Colors.YELLOW)
             cprint(f"Exception : {e}",Colors.YELLOW)
+            err_msg = traceback.format_exc()
+            cprint(err_msg,Colors.YELLOW)
 
     add("CheckpointLoaderRandom")
     add("CheckpointLoaderSimpleText")

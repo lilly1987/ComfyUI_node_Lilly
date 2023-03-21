@@ -1,11 +1,12 @@
 import os, glob, sys
 import random
 import re
-from .wildcards import *
+from .wildcards import wildcards
 #import wildcards
 
 print("wildcards_ComfyUI")
 #print(os.getcwd())
+print(f"CLIPTextEncodeWildcards __name__ {__name__}")
 
 class CLIPTextEncodeWildcards:
     @classmethod

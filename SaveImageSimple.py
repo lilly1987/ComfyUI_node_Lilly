@@ -5,7 +5,7 @@ import json
 
 import time
 
-from .Colors import cprint, Colors as Colors
+from .Colors import cprint, Colors 
 import os, sys
 py_name=os.path.basename(__file__)
 cprint(py_name, Colors.BLUE)

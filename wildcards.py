@@ -1,13 +1,16 @@
 import glob, sys
 import random
 import re
+import os
+
+print(f"init __name__ {__name__}")
+print(f"init __file__ {os.path.splitext(os.path.basename(__file__))[0]}")
+
 #import wildcards
-if __name__ == '__main__' :
-    print("nain")
+if __name__ == os.path.splitext(os.path.basename(__file__))[0] :
     from Colors import cprint, Colors as Colors
 else:
     from .Colors import cprint, Colors as Colors
-import os
 py_name=os.path.basename(__file__)
 cprint(py_name, Colors.BLUE)
 #print(os.getcwd())

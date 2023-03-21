@@ -1,3 +1,7 @@
+
+
+print(f"Colors __name__ {__name__}")
+
 class Colors:
     BLACK   = '\033[30m'      #Colors.BLACK
     RED     = '\033[31m'        #Colors.BLACK
@@ -24,7 +28,7 @@ def cprint(text,color=None):
     else:
         print(text)
         
-#from .Colors import cprint, Colors as Colors
+#from Colors import cprint, Colors as Colors
 import os
 py_name=os.path.basename(__file__)
 cprint(py_name, Colors.BLUE)

@@ -21,6 +21,8 @@ from PIL import Image
 from PIL.PngImagePlugin import PngInfo
 import numpy as np
 
+print(f"SimpleSampler __name__ {__name__}")
+print(f"SimpleSampler __file__ {os.path.splitext(os.path.basename(__file__))[0]}")
 
 from .Colors import cprint, Colors as Colors
 import os
@@ -31,7 +33,7 @@ cprint(py_name, Colors.BLUE)
 # wildcards support check
 wildcardsOn=False
 try:
-    from .wildcards import *
+    from wildcards import *
     wildcardsOn=True
     #wildcards.card_path=os.path.dirname(__file__)+"\\..\\wildcards\\**\\*.txt"
     cprint(f"{py_name} : import wildcards succ", Colors.GREEN )

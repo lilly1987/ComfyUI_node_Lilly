@@ -1,5 +1,10 @@
-from .Colors import cprint, Colors as Colors
 import os, sys
+
+if __name__ == os.path.splitext(os.path.basename(__file__))[0] :
+    from Colors import cprint, Colors as Colors
+else:
+    from .Colors import cprint, Colors as Colors
+
 py_name=os.path.basename(__file__)
 cprint(py_name, Colors.BLUE)
 
