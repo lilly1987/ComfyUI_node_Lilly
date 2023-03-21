@@ -17,6 +17,6 @@ class CLIPTextEncodeWildcards:
     CATEGORY = "conditioning"
 
     def encode(self, clip, text):
-        r=run(text)
+        r=wildcards.run(text)
         print(f"encode : {r}")
         return ([[clip.encode(r), {}]], )

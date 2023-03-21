@@ -1,4 +1,7 @@
-print("ComfyUI_node_Lilly.__init__")
+from .Colors import cprint, Colors as Colors
+import os
+py_name=os.path.basename(__file__)
+cprint(py_name, Colors.BLUE)
 
 import os
 import sys
@@ -42,13 +45,14 @@ if not md.startswith("custom_nodes."):
     }
 
     def add(name):
-        print(f"Load : {name}")
+        #print(f"Load : {name}")
         try:        
             pkg = importlib.import_module(f"{md}.{name}")
             NODE_CLASS_MAPPINGS[name]=eval(f"pkg.{name}")
-            print(f"ok   : {name}")
+            cprint(f"Load ok   : {name}")
         except Exception as e:         
-            print(f"Exception : {e}")
+            cprint(f"Load fail : {name}",Colors.YELLOW)
+            cprint(f"Exception : {e}",Colors.YELLOW)
 
     add("CheckpointLoaderRandom")
     add("CheckpointLoaderSimpleText")
@@ -57,3 +61,6 @@ if not md.startswith("custom_nodes."):
     add("LoraLoaderTextRandom")
     add("Random_Sampler")
     add("VAELoaderDecode")
+    add("SimpleSampler")
+    add("SaveImageSimple")
+    #add("test")
