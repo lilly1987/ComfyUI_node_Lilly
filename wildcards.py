@@ -15,19 +15,6 @@ py_name=os.path.basename(__file__)
 cprint(py_name, Colors.BLUE)
 #print(os.getcwd())
 
-filePath = __file__
-print("file path     : ", filePath)
-
-absFilePath = os.path.abspath(__file__)
-print("absolute path : ", absFilePath)
-
-realFilePath = os.path.realpath(__file__)
-print("real path     : ", realFilePath)
-
-path, filename = os.path.split(absFilePath)
-print("Script file path is {}, filename is {}".format(path, filename))
-
-
 # ============================================================
 class wildcards:
 
@@ -117,7 +104,7 @@ class wildcards:
     def card(match):
         #print(f"card i : {match.group(2)}")
         if match.group(2) in wildcards.cards :
-            r=random.choice(cards[match.group(2)])        
+            r=random.choice(wildcards.cards[match.group(2)])        
         else :    
             r= match.group(2)
         #print(f"card r : {r}")
@@ -142,7 +129,7 @@ class wildcards:
         
     # 카드 파일 읽기
     def card_load():
-        cards=wildcards.cards
+        #cards=wildcards.cards
         card_path=wildcards.card_path
         cards = {}
         #print(f"path : {path}")
@@ -164,7 +151,8 @@ class wildcards:
                     continue
                 cards[file_name]+=[line]
                 #print(f"line : {line}")
-        print(f"cards : {len(cards)}")
+        wildcards.cards=cards
+        print(f"cards : {len(wildcards.cards)}")
         #print(f"cards : {cards.keys()}")
 
     # 실행기
@@ -187,3 +175,4 @@ class wildcards:
 test="{3$$a1|{b2|c3|}|d4|{-$$|f|g}|{-2$$h||i}|{1-$$j|k|}}/{$$l|m|}/{0$$n|}"
 print(wildcards.run(test))
 print(wildcards.run("{9$$a|b}"))
+print(wildcards.run("__my__"))

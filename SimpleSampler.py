@@ -40,6 +40,8 @@ try:
 except:
     cprint(f"{py_name} : import wildcards fail", Colors.RED)
     wildcardsOn=False
+    err_msg = traceback.format_exc()
+    print(err_msg)
     
 #----------------------------
 class SimpleSampler:
