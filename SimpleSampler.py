@@ -24,10 +24,13 @@ import numpy as np
 print(f"SimpleSampler __name__ {__name__}")
 print(f"SimpleSampler __file__ {os.path.splitext(os.path.basename(__file__))[0]}")
 
-from .Colors import cprint, Colors as Colors
 import os
-py_name=os.path.basename(__file__)
-cprint(py_name, Colors.BLUE)
+if __name__ == os.path.splitext(os.path.basename(__file__))[0] :
+    from ConsoleColor import print, console
+else:
+    from .ConsoleColor import print, console
+print(__file__)
+print(os.path.basename(__file__))
 
 #----------------------------
 # wildcards support check
@@ -36,9 +39,9 @@ try:
     from wildcards import *
     wildcardsOn=True
     #wildcards.card_path=os.path.dirname(__file__)+"\\..\\wildcards\\**\\*.txt"
-    cprint(f"{py_name} : import wildcards succ", Colors.GREEN )
+    print(f"import wildcards succ", style="bold GREEN" )
 except:
-    cprint(f"{py_name} : import wildcards fail", Colors.RED)
+    print(f"import wildcards fail", style="bold RED")
     wildcardsOn=False
     err_msg = traceback.format_exc()
     print(err_msg)

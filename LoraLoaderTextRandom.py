@@ -21,7 +21,7 @@ class LoraLoaderTextRandom:
                 "strength_model_min": ("FLOAT", {"default": 0.50, "min": 0.0, "max": 10.0, "step": 0.01}),
                 "strength_model_max": ("FLOAT", {"default": 1.0, "min": 0.0, "max": 10.0, "step": 0.01}),
                 "strength_clip_min": ("FLOAT", {"default": 0.50, "min": 0.0, "max": 10.0, "step": 0.01}),
-                "strength_clip_max": ("FLOAT", {"default": 1.0, "min": 0.0, "max": 10.0, "step": 0.01}),
+                "strength_clip_max": ("FLOAT", {"default": 1.50, "min": 0.0, "max": 10.0, "step": 0.01}),
             }
         }
     RETURN_TYPES = ("MODEL", "CLIP")

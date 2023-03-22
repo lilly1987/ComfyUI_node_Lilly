@@ -2,17 +2,12 @@ import glob, sys
 import random
 import re
 import os
-
-print(f"init __name__ {__name__}")
-print(f"init __file__ {os.path.splitext(os.path.basename(__file__))[0]}")
-
-#import wildcards
 if __name__ == os.path.splitext(os.path.basename(__file__))[0] :
-    from Colors import cprint, Colors as Colors
+    from ConsoleColor import print, console
 else:
-    from .Colors import cprint, Colors as Colors
-py_name=os.path.basename(__file__)
-cprint(py_name, Colors.BLUE)
+    from .ConsoleColor import print, console
+print(__file__)
+print(os.path.basename(__file__))
 #print(os.getcwd())
 
 # ============================================================
@@ -83,8 +78,8 @@ class wildcards:
 
 
         except Exception as e:         
-            cprint(f"Error : {match.groups()}" ,Colors.YELLOW)
-            cprint(f"Exception : {e}" ,Colors.YELLOW)        
+            print(f"Error : {match.groups()}" ,Colors.YELLOW)
+            print(f"Exception : {e}" ,Colors.YELLOW)        
             return ""
             
             

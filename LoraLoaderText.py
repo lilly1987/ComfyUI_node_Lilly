@@ -6,16 +6,19 @@ import folder_paths
 class LoraLoaderText:
     @classmethod
     def INPUT_TYPES(s):
-        return {"required": { "model": ("MODEL",),
-                              "clip": ("CLIP", ),
-                            "lora_name": ("STRING", {
-                                "multiline": False, #True if you want the field to look like the one on the ClipTextEncode node
-                                "default": (folder_paths.get_filename_list("loras"), )
-                            }),
-                              #"lora_name": (folder_paths.get_filename_list("loras"), ),
-                              "strength_model": ("FLOAT", {"default": 1.0, "min": 0.0, "max": 10.0, "step": 0.01}),
-                              "strength_clip": ("FLOAT", {"default": 1.0, "min": 0.0, "max": 10.0, "step": 0.01}),
-                              }}
+        return {
+            "required": { 
+                "model": ("MODEL",),
+                  "clip": ("CLIP", ),
+                "lora_name": ("STRING", {
+                    "multiline": False, #True if you want the field to look like the one on the ClipTextEncode node
+                    "default": (folder_paths.get_filename_list("loras"), )
+                }),
+                  #"lora_name": (folder_paths.get_filename_list("loras"), ),
+                  "strength_model": ("FLOAT", {"default": 1.0, "min": 0.0, "max": 10.0, "step": 0.01}),
+                  "strength_clip": ("FLOAT", {"default": 1.0, "min": 0.0, "max": 10.0, "step": 0.01}),
+            }
+        }
     RETURN_TYPES = ("MODEL", "CLIP")
     FUNCTION = "load_lora"
 
@@ -45,7 +48,7 @@ class LoraLoaderText:
             return (model_lora, clip_lora)
         except Exception as e:
             print("LoraLoaderText Exception : "+ e)
-            return (strength_model, strength_clip)
+            return (model, clip)
 
 #NODE_CLASS_MAPPINGS = {
 #    "LoraLoaderText": LoraLoaderText,

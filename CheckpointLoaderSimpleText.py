@@ -4,16 +4,19 @@ from nodes import *
 import folder_paths
 import random
 from .check_name import *
-from .Colors import cprint, Colors as Colors
 import os
-py_name=os.path.basename(__file__)
-cprint(py_name, Colors.BLUE)
+if __name__ == os.path.splitext(os.path.basename(__file__))[0] :
+    from ConsoleColor import print, console
+else:
+    from .ConsoleColor import print, console
+print(__file__)
+print(os.path.basename(__file__))
 
 class CheckpointLoaderSimpleText:
     @classmethod
     def INPUT_TYPES(s):
         t_checkpoints=folder_paths.get_filename_list("checkpoints")
-        #cprint(f"checkpoints count : {len(t_checkpoints)}", Colors.BGREEN)
+        #print(f"checkpoints count : {len(t_checkpoints)}", Colors.BGREEN)
         return {
             "required": { 
                 "ckpt_name": (

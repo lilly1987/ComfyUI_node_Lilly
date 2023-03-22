@@ -1,31 +1,50 @@
-import os, sys
-
+import sys
+import os
 if __name__ == os.path.splitext(os.path.basename(__file__))[0] :
-    from Colors import cprint, Colors as Colors
+    from ConsoleColor import print, console
 else:
-    from .Colors import cprint, Colors as Colors
+    from .ConsoleColor import print, console
+print(__file__)
+print(os.path.basename(__file__))
+
+
+"""
+import psutil
+for proc in psutil.process_iter():
+  ps_name = proc.name()
+  if ps_name == 'python3':
+    cmdline = proc.cmdline()
+    print(cmdline)
+"""
+
+"""
+print()
+for key, value in os.environ.items():
+    print('{}: {}'.format(key, value))
+print()
+"""
 
 py_name=os.path.basename(__file__)
-cprint(py_name, Colors.BLUE)
+print(py_name, style="bold CYAN")
 
 absFilePath = os.path.abspath(__file__)
-cprint("abspath   : " + absFilePath , Colors.CYAN)
+print("abspath   : " + absFilePath , style="bold CYAN")
 
 realFilePath = os.path.realpath(__file__)
-cprint("realpath  : " + realFilePath , Colors.CYAN)
+print("realpath  : " + realFilePath , style="bold CYAN")
 
 normpath=os.path.normpath(__file__)
-cprint("normpath  : " + normpath , Colors.CYAN)
+print("normpath  : " + normpath , style="bold CYAN")
 
 subfolder = os.path.dirname(normpath)
-cprint("subfolder : " + subfolder , Colors.CYAN)
+print("subfolder : " + subfolder , style="bold CYAN")
 
 filename = os.path.basename(normpath)
-cprint("filename  : " + filename , Colors.CYAN)
+print("filename  : " + filename , style="bold CYAN")
         
 mainFile = os.path.abspath(sys.modules['__main__'].__file__)
-cprint("mainFile  : " + mainFile , Colors.CYAN)
+print("mainFile  : " + mainFile ,style="bold CYAN")
 
 mainfolder = os.path.dirname(mainFile)
-cprint("mainfolder : " + mainfolder , Colors.CYAN)
+print("mainfolder : " + mainfolder , style="bold CYAN")
 

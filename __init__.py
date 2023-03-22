@@ -1,15 +1,12 @@
 import os
-#from ComfyUI_script import mypath
+if __name__ == os.path.splitext(os.path.basename(__file__))[0] :
+    from ConsoleColor import print, console
+else:
+    from .ConsoleColor import print, console
+print(__file__)
+print(os.path.basename(__file__))
 
-print(f"init __name__ {__name__}")
-print(f"init __file__ {os.path.splitext(os.path.basename(__file__))[0]}")
 
-from .Colors import cprint, Colors as Colors
-
-py_name=os.path.basename(__file__)
-cprint(py_name, Colors.BLUE)
-
-import os
 import sys
 #print(f"sys.modules : {sys.modules}")
 
@@ -55,12 +52,9 @@ if not md.startswith("custom_nodes."):
         try:        
             pkg = importlib.import_module(f"{md}.{name}")
             NODE_CLASS_MAPPINGS[name]=eval(f"pkg.{name}")
-            cprint(f"Load ok   : {name}")
-        except Exception as e:         
-            cprint(f"Load fail : {name}",Colors.YELLOW)
-            cprint(f"Exception : {e}",Colors.YELLOW)
-            err_msg = traceback.format_exc()
-            cprint(err_msg,Colors.YELLOW)
+            print(f"Load ok   : {name}", style="bold green")
+        except Exception:
+            console.print_exception()
 
     add("CheckpointLoaderRandom")
     add("CheckpointLoaderSimpleText")

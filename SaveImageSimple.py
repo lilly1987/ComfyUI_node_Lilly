@@ -5,12 +5,16 @@ import json
 
 import time
 
-from .Colors import cprint, Colors 
-import os, sys
-py_name=os.path.basename(__file__)
-cprint(py_name, Colors.BLUE)
+import os
+if __name__ == os.path.splitext(os.path.basename(__file__))[0] :
+    from ConsoleColor import print, console
+    from mypath import *
+else:
+    from .ConsoleColor import print, console
+    from .mypath import *
+print(__file__)
+print(os.path.basename(__file__))
 
-from .mypath import *
 
 class SaveImageSimple:
     def __init__(self):
@@ -37,9 +41,9 @@ class SaveImageSimple:
     def save_images(self, images, filename_prefix="", prompt=None, extra_pnginfo=None):
 
         outputdir=os.path.join(mainfolder, "output")
-        #cprint("outputdir : " + outputdir , Colors.CYAN)
+        #print("outputdir : " + outputdir , Colors.CYAN)
 
-        #cprint("len(images) : " + str(len(images)) , Colors.CYAN)
+        #print("len(images) : " + str(len(images)) , Colors.CYAN)
         filename_prefix+=time.strftime('_%Y%m%d_%H%M%S')
         results = list()
         cnt=1
@@ -50,11 +54,11 @@ class SaveImageSimple:
             if prompt is not None:
                 metadata.add_text("prompt", json.dumps(prompt))
             if extra_pnginfo is not None:
-                #cprint("extra_pnginfo : " + json.dumps(extra_pnginfo) , Colors.CYAN)
+                #print("extra_pnginfo : " + json.dumps(extra_pnginfo) , Colors.CYAN)
                 for x in extra_pnginfo:
                     metadata.add_text(x, json.dumps(extra_pnginfo[x]))
             if not os.path.exists(outputdir):
-                cprint("makedirs  : " + outputdir , Colors.CYAN)
+                print("makedirs  : " + outputdir , Colors.CYAN)
                 os.makedirs(outputdir)            
             filename=filename_prefix+f"_{cnt:05}_.png"
             filename=os.path.join(outputdir, filename)
