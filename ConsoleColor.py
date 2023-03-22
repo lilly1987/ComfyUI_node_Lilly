@@ -24,7 +24,7 @@ print(
 print("test", style="bold white on blue")
 """
 import os
-if __name__ == os.path.splitext(os.path.basename(__file__))[0] :
+if __name__ == os.path.splitext(os.path.basename(__file__))[0] or __name__ =='__main__':
     from ConsoleColor import print, console
 else:
     from .ConsoleColor import print, console

@@ -1,8 +1,15 @@
 import os, glob, sys
 import random
 import re
-from .wildcards import wildcards
-#import wildcards
+import os
+if __name__ == os.path.splitext(os.path.basename(__file__))[0] or __name__ =='__main__':
+    from ConsoleColor import print, console
+    from wildcards import wildcards
+else:
+    from .ConsoleColor import print, console
+    from .wildcards import wildcards
+print(__file__)
+print(os.path.basename(__file__))
 
 print("wildcards_ComfyUI")
 #print(os.getcwd())
