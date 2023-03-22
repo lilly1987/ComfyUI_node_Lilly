@@ -1,7 +1,10 @@
 # ComfyUI-node-Lilly
 
 ## install
+
 ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI_node_Lilly
+
+![2023-03-22 05 54 43](https://user-images.githubusercontent.com/20321215/226738610-c042a51c-8e72-45de-b714-385eaac383af.png)
 
 
 ## wildcards
