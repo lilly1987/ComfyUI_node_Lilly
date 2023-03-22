@@ -168,6 +168,6 @@ class wildcards:
 #if __name__ == '__main__' :
     # 테스트용
 test="{3$$a1|{b2|c3|}|d4|{-$$|f|g}|{-2$$h||i}|{1-$$j|k|}}/{$$l|m|}/{0$$n|}"
-print(wildcards.run(test))
-print(wildcards.run("{9$$a|b}"))
-print(wildcards.run("__my__"))
+print("wildcards test : "+wildcards.run(test))
+#print("wildcards test : "+wildcards.run("{9$$a|b}"))
+print("wildcards test : "+wildcards.run("__my__"))
