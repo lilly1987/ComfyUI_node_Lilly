@@ -1,17 +1,13 @@
+import sys
 import os
 if __name__ == os.path.splitext(os.path.basename(__file__))[0] :
     from ConsoleColor import print, console
 else:
     from .ConsoleColor import print, console
-print(__file__)
-print(os.path.basename(__file__))
+#print(__file__)
+#print(os.path.basename(__file__))
 
-
-import sys
 #print(f"sys.modules : {sys.modules}")
-
-#mn=os.path.abspath(__main__)
-#print("nm ", mn)
 
 #filePath = __file__
 #print("This script file path is ", filePath)
@@ -24,16 +20,17 @@ import sys
 #
 #path, filename = os.path.split(absFilePath)
 #print("Script file path is {}, filename is {}".format(path, filename))
-    
-nm=os.path.abspath(__name__)
-print("abspath __name__ : ", nm)
 
 wd = os.getcwd()
-print("working directory : ", wd)
+#print("working directory : ", wd)
+
+nm=os.path.abspath(__name__)
+#print("abspath __name__ : ", nm)
 
 md=nm.replace(wd+"\\","")
-print("import name", md)
-
+#print("import name", md)
+""" 
+"""
 #if md in sys.modules:
 #    print(f"{md!r} already in sys.modules")
 #else:

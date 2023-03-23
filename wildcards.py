@@ -6,8 +6,8 @@ if __name__ == os.path.splitext(os.path.basename(__file__))[0] :
     from ConsoleColor import print, console
 else:
     from .ConsoleColor import print, console
-print(__file__)
-print(os.path.basename(__file__))
+#print(__file__)
+#print(os.path.basename(__file__))
 #print(os.getcwd())
 
 # ============================================================
@@ -16,7 +16,7 @@ class wildcards:
     # 가져올 파일 목록
     card_path=os.path.dirname(__file__)+"\\..\\..\\wildcards\\**\\*.txt"
     #card_path=f"{os.getcwd()}\\wildcards\\**\\*.txt"
-    print(f"wildcards card_path {card_path}")
+    print(f"wildcards card_path : ", card_path , style="bold CYAN")
 
     # 정규식
     #resub  = re.compile(r"(\{)([^\{\}]*)(\})")
@@ -147,7 +147,7 @@ class wildcards:
                 cards[file_name]+=[line]
                 #print(f"line : {line}")
         wildcards.cards=cards
-        print(f"cards : {len(wildcards.cards)}")
+        print(f"[cyan]cards file count : [/cyan]", len(wildcards.cards))
         #print(f"cards : {cards.keys()}")
 
     # 실행기
@@ -168,6 +168,6 @@ class wildcards:
 #if __name__ == '__main__' :
     # 테스트용
 test="{3$$a1|{b2|c3|}|d4|{-$$|f|g}|{-2$$h||i}|{1-$$j|k|}}/{$$l|m|}/{0$$n|}"
-print("wildcards test : "+wildcards.run(test))
+print("[green]wildcards test : [/green]",wildcards.run(test))
 #print("wildcards test : "+wildcards.run("{9$$a|b}"))
-print("wildcards test : "+wildcards.run("__my__"))
+print("[green]wildcards test : [/green]",wildcards.run("__my__"))

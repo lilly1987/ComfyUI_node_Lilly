@@ -1,11 +1,12 @@
 import sys
+import json
 import os
 if __name__ == os.path.splitext(os.path.basename(__file__))[0] :
     from ConsoleColor import print, console
 else:
     from .ConsoleColor import print, console
-print(__file__)
-print(os.path.basename(__file__))
+#print(__file__)
+#print(os.path.basename(__file__))
 
 
 """
@@ -48,3 +49,19 @@ print("mainFile  : " + mainFile ,style="bold CYAN")
 mainfolder = os.path.dirname(mainFile)
 print("mainfolder : " + mainfolder , style="bold CYAN")
 
+def jsondic(full,dic):
+    
+    path=os.path.split(full)[0]
+    if not os.path.exists(path):
+        os.makedirs(path)
+    #with open(f"./RandomLoop/chars-{time.strftime('_%Y%m%d_%H%M%S')}.json", 'w', encoding='utf-8') as file:
+    if os.path.exists(full):
+        with open(full, 'r', encoding='utf-8') as file:
+            dic=json.load(file)
+            #print(dic)
+    else:
+        with open(full, 'w', encoding='utf-8') as file:
+            json.dump(dic, file, sort_keys=False, indent=4)
+            
+    return path
+        

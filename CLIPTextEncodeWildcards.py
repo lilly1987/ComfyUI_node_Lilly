@@ -8,12 +8,12 @@ if __name__ == os.path.splitext(os.path.basename(__file__))[0] or __name__ =='__
 else:
     from .ConsoleColor import print, console
     from .wildcards import wildcards
-print(__file__)
-print(os.path.basename(__file__))
+#print(__file__)
+#print(os.path.basename(__file__))
 
-print("wildcards_ComfyUI")
+#print("wildcards_ComfyUI")
 #print(os.getcwd())
-print(f"CLIPTextEncodeWildcards __name__ {__name__}")
+#Wprint(f"CLIPTextEncodeWildcards __name__ {__name__}")
 
 class CLIPTextEncodeWildcards:
     @classmethod
@@ -26,5 +26,5 @@ class CLIPTextEncodeWildcards:
 
     def encode(self, clip, text):
         r=wildcards.run(text)
-        print(f"encode : {r}")
+        print(f"[green]encode : [/green]",r)
         return ([[clip.encode(r), {}]], )

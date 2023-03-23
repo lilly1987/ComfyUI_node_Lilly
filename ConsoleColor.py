@@ -14,7 +14,11 @@ if missing:
 from rich.console import Console
 console=Console()
 print=console.log
-
+"""
+print("test", style="bold white on blue")
+print("test", style="bold green")
+print("test", style="bold CYAN")
+"""
 """
 import os
 if __name__ == os.path.splitext(os.path.basename(__file__))[0] or __name__ =='__main__':
