@@ -78,8 +78,7 @@ class wildcards:
 
 
         except Exception as e:         
-            print(f"Error : {match.groups()}" ,Colors.YELLOW)
-            print(f"Exception : {e}" ,Colors.YELLOW)        
+            console.print_exception()
             return ""
             
             

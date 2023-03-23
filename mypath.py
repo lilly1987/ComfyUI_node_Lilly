@@ -48,7 +48,7 @@ print("os.path.abspath(sys.modules\['__main__'].__file__) : " + mainFile ,style=
 mainfolder = os.path.dirname(mainFile)
 print("os.path.dirname(mainFile) : " + mainfolder , style="bold CYAN")
 
-def jsondic(full,dic):
+def jsondic(full,dic,update=False):
     
     path=os.path.split(full)[0]
     if not os.path.exists(path):
@@ -56,8 +56,11 @@ def jsondic(full,dic):
     #with open(f"./RandomLoop/chars-{time.strftime('_%Y%m%d_%H%M%S')}.json", 'w', encoding='utf-8') as file:
     if os.path.exists(full):
         with open(full, 'r', encoding='utf-8') as file:
-            dic=json.load(file)
-            #print(dic)
+            tmp=json.load(file)
+            if update:
+                dic.update(tmp)
+            else:
+                dic=(tmp)
     else:
         with open(full, 'w', encoding='utf-8') as file:
             json.dump(dic, file, sort_keys=False, indent=4)
