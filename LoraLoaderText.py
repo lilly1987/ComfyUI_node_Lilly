@@ -3,6 +3,11 @@ import comfy.sd
 from nodes import *
 import folder_paths
 
+if __name__ == os.path.splitext(os.path.basename(__file__))[0] :
+    from ConsoleColor import print, console
+else:
+    from .ConsoleColor import print, console
+
 class LoraLoaderText:
     @classmethod
     def INPUT_TYPES(s):
@@ -27,7 +32,7 @@ class LoraLoaderText:
     def load_lora(self, model, clip, lora_name, strength_model, strength_clip):
         
         if lora_name is None or lora_name =="":
-            print("LoraLoaderText No")
+            print("[red]No lora_name[/red] : ", lora_name)
             return (strength_model, strength_clip)
         
         if lora_name.endswith('.safetensors') or lora_name.endswith('.ckpt') :
@@ -35,19 +40,19 @@ class LoraLoaderText:
             
         else:
             lora_path = folder_paths.get_full_path("loras", lora_name+'.safetensors')
-            print("LoraLoaderText lora_path : "+ lora_path)
+            print("[green]lora_path : [/green]"+ lora_path)
             if lora_path is None:
                 lora_path = folder_paths.get_full_path("loras", lora_name+'.ckpt')
-                print("LoraLoaderText lora_path : "+ lora_path)
+                print("[green]lora_path : [/green]"+ lora_path)
                 if lora_path is None:
-                    print("LoraLoaderText No : "+ lora_name)
-                    return (strength_model, strength_clip)
+                    print("[red]No lora_name[/red] : ", lora_name)
+                    return (model, clip)
                 
         try:
             model_lora, clip_lora = comfy.sd.load_lora_for_models(model, clip, lora_path, strength_model, strength_clip)
             return (model_lora, clip_lora)
         except Exception as e:
-            print("LoraLoaderText Exception : "+ e)
+            console.print_exception()
             return (model, clip)
 
 #NODE_CLASS_MAPPINGS = {
