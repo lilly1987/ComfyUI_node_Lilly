@@ -52,7 +52,9 @@ if not md.startswith("custom_nodes."):
             print(f"Load ok   : {name}", style="bold green")
         except Exception:
             console.print_exception()
-
+    
+    console.rule(f" init start ", style="bold green")
+    
     add("CheckpointLoaderRandom")
     add("CheckpointLoaderSimpleText")
     add("CLIPTextEncodeWildcards")
@@ -63,3 +65,5 @@ if not md.startswith("custom_nodes."):
     add("SimpleSampler")
     add("SaveImageSimple")
     #add("test")
+    
+    console.rule(" finit end ", style="bold green")

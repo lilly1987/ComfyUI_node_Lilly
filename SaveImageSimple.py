@@ -12,8 +12,8 @@ if __name__ == os.path.splitext(os.path.basename(__file__))[0] :
 else:
     from .ConsoleColor import print, console
     from .mypath import *
-print(__file__)
-print(os.path.basename(__file__))
+#print(__file__)
+#print(os.path.basename(__file__))
 
 
 class SaveImageSimple:
