@@ -1,5 +1,5 @@
 import glob, sys
-import random
+from random import Random
 import re
 import os
 if __name__ == os.path.splitext(os.path.basename(__file__))[0] :
@@ -27,48 +27,50 @@ class wildcards:
     cards = {}
     seperator=", "
     loop_max=50
+    seed = 0
+    rnd = Random(seed)
 
     # | 로 입력된것중 하나 가져오기
     def sub(match):
         #print(f"sub : {(match.groups())}")
-        try:        
+        try:
             #m=match.group(2)
             s=match.group(3)
             m=match.group(7).split("|")
 
             #print(f"m : {m}")
             if s is None:
-                return random.choice(m)
+                return wildcards.rnd.choice(m)
             c=len(m)
             n=int(match.group(4)) if  match.group(4) else None
             if n:
 
-                r=wildcards.seperator.join(random.sample(m,min(n,c)))
+                r=wildcards.seperator.join(wildcards.rnd.sample(m,min(n,c)))
                 #print(f"n : {n} ; {r}")
                 return r
 
             n1=match.group(5)
             n2=match.group(6)
-            
+
             if n1 or n2:
                 a=min(int(n1 if n1 else c), int(n2 if n2 else c),c)
                 b=min(max(int(n1 if n1 else 0), int(n2 if n2 else 0)),c)
                 #print(f"ab : {a} ; {b}")
                 r=wildcards.seperator.join(
-                    random.sample(
+                    wildcards.rnd.sample(
                         m,
-                        random.randint(
+                        wildcards.rnd.randint(
                             a,b
                         )
                     )
                 )
-                #n1=int(match.group(5)) if not match.group(5) is None 
-                #n2=int(match.group(6)) if not match.group(6) is None 
+                #n1=int(match.group(5)) if not match.group(5) is None
+                #n2=int(match.group(6)) if not match.group(6) is None
             else:
                 r=wildcards.seperator.join(
-                    random.sample(
+                    wildcards.rnd.sample(
                         m,
-                        random.randint(
+                        wildcards.rnd.randint(
                             0,c
                         )
                     )
@@ -77,11 +79,11 @@ class wildcards:
             return r
 
 
-        except Exception as e:         
+        except Exception as e:
             console.print_exception()
             return ""
-            
-            
+
+
 
     # | 로 입력된것중 하나 가져오기 반복
     def sub_loop(text):
@@ -98,12 +100,12 @@ class wildcards:
     def card(match):
         #print(f"card i : {match.group(2)}")
         if match.group(2) in wildcards.cards :
-            r=random.choice(wildcards.cards[match.group(2)])        
-        else :    
+            r=wildcards.rnd.choice(wildcards.cards[match.group(2)])
+        else :
             r= match.group(2)
         #print(f"card r : {r}")
         return r
-        
+
 
     # 카드 중에서 가져오기 반복. | 의 것도 처리
     def card_loop(text):
@@ -113,14 +115,14 @@ class wildcards:
             #print(f"card l : {bak}")
             if bak==tmp :
                 tmp=wildcards.sub_loop(tmp)
-                
+
             if bak==tmp :
                 #print(f"card le : {bak}")
                 return tmp
             bak=tmp
         #print(f"card le : {bak}")
         return bak
-        
+
     # 카드 파일 읽기
     def card_load():
         #cards=wildcards.cards
@@ -129,7 +131,7 @@ class wildcards:
         #print(f"path : {path}")
         files=glob.glob(card_path, recursive=True)
         #print(f"files : {files}")
-        
+
         for file in files:
             basename = os.path.basename(file)
             file_name = os.path.splitext(basename)[0]
@@ -150,15 +152,16 @@ class wildcards:
         #print(f"cards : {cards.keys()}")
 
     # 실행기
-    def run(text):
-
+    def run(text, seed=0):
+        wildcards.seed = seed
+        wildcards.rnd = Random(seed)
         wildcards.card_load()
 
         #print(f"text : {text}")
         result=wildcards.card_loop(text)
         #print(f"result : {result}")
         return result
-        
+
     # ============================================================
 
 #m = p.sub(sub, test)
