@@ -72,18 +72,23 @@ __anotherfile__
 
 ## for ComfyUI
 
+
+
+### CLIPTextEncodeWildcards
+
+- CLIPTextEncodeWildcards : no seed
+- CLIPTextEncodeWildcards : seed
+
 ![2023-03-20 02 13 50](https://user-images.githubusercontent.com/20321215/226194627-b560c9e1-5dfa-49d9-8503-939693a8b119.png)
 
 
 
 
 
-
-
-## random_sampler_node.py
+### random_sampler_node.py
 
 ![2023-03-18 20 53 37](https://user-images.githubusercontent.com/20321215/226104447-eadd1d15-437f-4a41-b989-511390236d13.png)
 
-## VAELoaderDecode.py
+### VAELoaderDecode.py
 
 ![2023-03-18 20 52 27](https://user-images.githubusercontent.com/20321215/226104441-a13f49c6-c5be-4c70-b93e-f4ad984e9ff1.png)
