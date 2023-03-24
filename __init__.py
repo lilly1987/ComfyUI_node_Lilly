@@ -44,11 +44,13 @@ if not md.startswith("custom_nodes."):
     NODE_CLASS_MAPPINGS = {
     }
 
-    def add(name):
+    def add(name,list=None):
         #print(f"Load : {name}")
         try:        
             pkg = importlib.import_module(f"{md}.{name}")
             NODE_CLASS_MAPPINGS[name]=eval(f"pkg.{name}")
+            if type(list) is str:
+                NODE_CLASS_MAPPINGS[list]=eval(f"pkg.{list}")
             print(f"Load ok   : {name}", style="bold green")
         except Exception:
             console.print_exception()
@@ -57,7 +59,7 @@ if not md.startswith("custom_nodes."):
     
     add("CheckpointLoaderRandom")
     add("CheckpointLoaderSimpleText")
-    add("CLIPTextEncodeWildcards")
+    add("CLIPTextEncodeWildcards","CLIPTextEncodeWildcards2")
     add("LoraLoaderText")
     add("LoraLoaderTextRandom")
     add("Random_Sampler")
@@ -66,4 +68,4 @@ if not md.startswith("custom_nodes."):
     add("SaveImageSimple")
     #add("test")
     
-    console.rule(" finit end ", style="bold green")
+    console.rule(" init end ", style="bold green")

@@ -18,13 +18,38 @@ else:
 class CLIPTextEncodeWildcards:
     @classmethod
     def INPUT_TYPES(s):
-        return {"required": {"text": ("STRING", {"multiline": True}), "clip": ("CLIP", )}}
+        return {
+        "required": {
+            "text": ("STRING", {"multiline": True}), "clip": ("CLIP", )
+        }
+        }
     RETURN_TYPES = ("CONDITIONING",)
     FUNCTION = "encode"
 
     CATEGORY = "conditioning"
 
     def encode(self, clip, text):
+        r=wildcards.run(text)
+        print(f"[green]encode : [/green]",r)
+        return ([[clip.encode(r), {}]], )
+
+class CLIPTextEncodeWildcards2:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {
+        "required": {
+            "text": ("STRING", {"multiline": True}), "clip": ("CLIP", ),
+            "seed": ("INT", {"default": 0, "min": 0, "max": 0xffffffffffffffff}),
+            
+        }
+        }
+    RETURN_TYPES = ("CONDITIONING",)
+    FUNCTION = "encode"
+
+    CATEGORY = "conditioning"
+
+    def encode(self, seed, clip, text):
+        random.seed(seed)
         r=wildcards.run(text)
         print(f"[green]encode : [/green]",r)
         return ([[clip.encode(r), {}]], )
