@@ -2,7 +2,7 @@ import glob, sys
 import random
 import re
 import os
-if __name__ == os.path.splitext(os.path.basename(__file__))[0] :
+if __name__ == os.path.splitext(os.path.basename(__file__))[0] or __name__ =='__main__':
     from ConsoleColor import print, console
 else:
     from .ConsoleColor import print, console
@@ -20,7 +20,8 @@ class wildcards:
 
     # 정규식
     #resub  = re.compile(r"(\{)([^\{\}]*)(\})")
-    resub  = re.compile(r"(\{)(((\d+)|(\d+)?-(\d+)?)?\$\$)?([^\{\}]*)(\})")
+    #resub  = re.compile(r"(\{)(((\d+)|(\d+)?-(\d+)?)?\$\$((.*)?\$\$)?)?([^\{\}]*)(\})")
+    resub  = re.compile(r"(\{)(((\d+)|(\d+)?-(\d+)?)?\$\$(([^\{\}]*?)\$\$)?)?([^\{\}]*)(\})")
     recard = re.compile(r"(__)(.*?)(__)")
 
     # 카드 목록
@@ -30,20 +31,23 @@ class wildcards:
 
     # | 로 입력된것중 하나 가져오기
     def sub(match):
-        #print(f"sub : {(match.groups())}")
+        print(f"sub : {(match.groups())}")
         try:        
             #m=match.group(2)
+            seperator=wildcards.seperator
             s=match.group(3)
-            m=match.group(7).split("|")
-
-            #print(f"m : {m}")
+            m=match.group(9).split("|")
+            p=match.group(8)
+            if p:
+                seperator=p
+                
             if s is None:
                 return random.choice(m)
             c=len(m)
             n=int(match.group(4)) if  match.group(4) else None
             if n:
 
-                r=wildcards.seperator.join(random.sample(m,min(n,c)))
+                r=seperator.join(random.sample(m,min(n,c)))
                 #print(f"n : {n} ; {r}")
                 return r
 
@@ -54,7 +58,7 @@ class wildcards:
                 a=min(int(n1 if n1 else c), int(n2 if n2 else c),c)
                 b=min(max(int(n1 if n1 else 0), int(n2 if n2 else 0)),c)
                 #print(f"ab : {a} ; {b}")
-                r=wildcards.seperator.join(
+                r=seperator.join(
                     random.sample(
                         m,
                         random.randint(
@@ -65,7 +69,7 @@ class wildcards:
                 #n1=int(match.group(5)) if not match.group(5) is None 
                 #n2=int(match.group(6)) if not match.group(6) is None 
             else:
-                r=wildcards.seperator.join(
+                r=seperator.join(
                     random.sample(
                         m,
                         random.randint(
@@ -166,7 +170,9 @@ class wildcards:
 #print(__name__)
 #if __name__ == '__main__' :
     # 테스트용
-#test="{3$$a1|{b2|c3|}|d4|{-$$|f|g}|{-2$$h||i}|{1-$$j|k|}}/{$$l|m|}/{0$$n|}"
-#print("[green]wildcards test : [/green]",wildcards.run(test))
+test="{3$$a1|{b2|c3|}|d4|{-$$|f|g}|{-2$$h||i}|{1-$$j|k|}}/{$$l|m|}/{0$$n|}/{9$$-$$a|b|c}/{9$$ {and|or} $$a|b|c}"
+print("[green]wildcards test : [/green]",wildcards.run(test),style="reset")
 #print("wildcards test : "+wildcards.run("{9$$a|b}"))
 #print("[green]wildcards test : [/green]",wildcards.run("__my__"))
+print("wildcards test : "+wildcards.run("{9$$-$$a|b|c}"))
+print("wildcards test : "+wildcards.run("{9$$ {and|or} $$a|b|c}"))

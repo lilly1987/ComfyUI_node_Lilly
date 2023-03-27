@@ -29,6 +29,7 @@ class CLIPTextEncodeWildcards:
     CATEGORY = "conditioning"
 
     def encode(self, clip, text):
+        print(f"[green]text : [/green]",text)
         r=wildcards.run(text)
         print(f"[green]encode : [/green]",r)
         return ([[clip.encode(r), {}]], )
@@ -50,6 +51,7 @@ class CLIPTextEncodeWildcards2:
 
     def encode(self, seed, clip, text):
         random.seed(seed)
+        print(f"[green]text : [/green]",text)
         r=wildcards.run(text)
         print(f"[green]encode : [/green]",r)
         return ([[clip.encode(r), {}]], )
