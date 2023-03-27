@@ -12,7 +12,15 @@ if missing:
     subprocess.check_call([python, '-m', 'pip', 'install', *missing], stdout=subprocess.DEVNULL)
     
 from rich.console import Console
-console=Console()
+from rich.theme import Theme
+#console=Console(style="reset")
+custom_theme = Theme({
+    "repr.path": "bright_blue",
+    "progress.percentage": "bright_blue",
+    "markdown.block_quote": "bright_blue",
+    "iso8601.time": "bright_blue"
+})
+console = Console(theme=custom_theme)
 print=console.log
 """
 print("test", style="bold white on blue")
