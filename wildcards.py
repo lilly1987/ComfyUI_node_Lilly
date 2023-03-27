@@ -31,7 +31,7 @@ class wildcards:
 
     # | 로 입력된것중 하나 가져오기
     def sub(match):
-        print(f"sub : {(match.groups())}")
+        #print(f"sub : {(match.groups())}")
         try:        
             #m=match.group(2)
             seperator=wildcards.seperator
