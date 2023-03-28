@@ -3,7 +3,12 @@ import comfy.sd
 from nodes import *
 import folder_paths
 import random
-from .check_name import *
+if __name__ == os.path.splitext(os.path.basename(__file__))[0] :
+    from ConsoleColor import print, console
+    from mypath import *
+else:
+    from .ConsoleColor import print, console
+    from .mypath import *
 
 class LoraLoaderTextRandom:
     @classmethod
