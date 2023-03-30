@@ -73,7 +73,7 @@ def name_split_choice(name):
 def filenameget(v_path):
     t_path=os.path.join(os.path.dirname(__file__),v_path)
     print(t_path)
-    fullpaths=glob.glob(t_path)
+    fullpaths=glob.glob(t_path, recursive=True)
     print(fullpaths)
     fullpath=random.choice(fullpaths)
     name=os.path.basename(fullpath)
