@@ -44,13 +44,17 @@ if not md.startswith("custom_nodes."):
     NODE_CLASS_MAPPINGS = {
     }
 
-    def add(name,list=None):
+    def add(name,clist=None):
         #print(f"Load : {name}")
         try:        
             pkg = importlib.import_module(f"{md}.{name}")
-            NODE_CLASS_MAPPINGS[name]=eval(f"pkg.{name}")
-            if type(list) is str:
-                NODE_CLASS_MAPPINGS[list]=eval(f"pkg.{list}")
+            if clist is None:
+                NODE_CLASS_MAPPINGS[name]=eval(f"pkg.{name}")
+            elif type(clist) is str:
+                NODE_CLASS_MAPPINGS[clist]=eval(f"pkg.{clist}")
+            elif type(clist) is list:
+                for c in clist:
+                    NODE_CLASS_MAPPINGS[c]=eval(f"pkg.{c}")
             print(f"Load ok   : {name}", style="bold green")
         except Exception:
             console.print_exception()
@@ -59,7 +63,7 @@ if not md.startswith("custom_nodes."):
     
     add("CheckpointLoaderRandom")
     add("CheckpointLoaderSimpleText")
-    add("CLIPTextEncodeWildcards","CLIPTextEncodeWildcards2")
+    add("CLIPTextEncodeWildcards",["CLIPTextEncodeWildcards","CLIPTextEncodeWildcards2","CLIPTextEncodeWildcards3"])
     add("LoraLoaderText")
     add("LoraLoaderTextRandom")
     add("Random_Sampler")
