@@ -68,7 +68,7 @@ if not md.startswith("custom_nodes."):
     add("LoraLoaderTextRandom")
     add("Random_Sampler")
     add("VAELoaderDecode")
-    add("SimpleSampler")
+    add("SimpleSampler",["SimpleSampler","SimpleSamplerVAE"])
     add("SaveImageSimple")
     #add("test")
     
