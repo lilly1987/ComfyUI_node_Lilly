@@ -82,7 +82,25 @@ __anotherfile__
 ![2023-03-20 02 13 50](https://user-images.githubusercontent.com/20321215/226194627-b560c9e1-5dfa-49d9-8503-939693a8b119.png)
 
 
+## SimpleSampler+modelVAE
 
+- include wildcards
+
+![SimpleSampler+modelVAE](https://user-images.githubusercontent.com/20321215/229340970-19c5c0f7-6281-430d-87ce-c2e512ead277.png)
+
+
+## SimpleSampler
+
+- include wildcards
+
+![SimpleSampler](https://user-images.githubusercontent.com/20321215/229341019-0cea9dd8-0b03-4f4a-8f49-aff068b58faf.png)
+
+
+## SimpleSamplerVAE
+
+- include wildcards
+
+![SimpleSamplerVAE](https://user-images.githubusercontent.com/20321215/229341040-72d422d5-7904-41c3-a0e7-ac256ea40d0e.png)
 
 
 ### random_sampler_node.py
