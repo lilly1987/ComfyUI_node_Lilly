@@ -70,6 +70,7 @@ if not md.startswith("custom_nodes."):
     add("VAELoaderDecode")
     add("SimpleSampler",["SimpleSampler","SimpleSamplerVAE"])
     add("SaveImageSimple")
+    add("TextWildcards")
     #add("test")
     
     console.rule(" init end ", style="bold green")
