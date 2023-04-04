@@ -20,7 +20,7 @@ class TextWildcards:
             
         }
         }
-    RETURN_TYPES = ("STRING",)
+    RETURN_TYPES = ("STRING","ASCII")
     FUNCTION = "encode"
 
     CATEGORY = "utils"
@@ -30,4 +30,4 @@ class TextWildcards:
         print(f"[green]text : [/green]",text)
         r=wildcards.run(text)
         print(f"[green]result : [/green]",r)
-        return ([r], )
+        return ([r, r], )
