@@ -2,7 +2,7 @@ import comfy.samplers
 import comfy.sd
 import comfy.utils
 
-import comfy_extras.clip_vision
+#import comfy_extras.clip_vision
 
 import model_management
 import importlib
