@@ -70,6 +70,12 @@ c
 __anotherfile__
 ```
 
+### reload card
+
+call wildcards.card_load()
+or
+wildcards.run("{9$$-$$a|b|c}",True)
+
 ## for ComfyUI
 
 
