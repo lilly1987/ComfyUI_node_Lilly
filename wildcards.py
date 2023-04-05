@@ -25,6 +25,7 @@ class wildcards:
     recard = re.compile(r"(__)(.*?)(__)")
 
     # 카드 목록
+    is_card_Load = False
     cards = {}
     seperator=", "
     loop_max=50
@@ -152,13 +153,15 @@ class wildcards:
         wildcards.cards=cards
         print(f"[cyan]cards file count : [/cyan]", len(wildcards.cards))
         #print(f"cards : {cards.keys()}")
+        wildcards.is_card_Load=True
 
     # 실행기
-    def run(text):
+    def run(text,load=False):
         if text is None or type(text) is not str:
             print("[red]text is not str : [/red]",text)
             return None
-        wildcards.card_load()
+        if not wildcards.is_card_Load or load:
+            wildcards.card_load()
 
         #print(f"text : {text}")
         result=wildcards.card_loop(text)
