@@ -1,6 +1,10 @@
 import sys
 import os
-if __name__ == os.path.splitext(os.path.basename(__file__))[0] :
+
+
+print(f"__file__ : {__file__}")
+print(f"__name__ : {__name__}")
+if __name__ == os.path.splitext(os.path.basename(__file__))[0] or __name__ =='__main__':
     from ConsoleColor import print, console
 else:
     from .ConsoleColor import print, console
