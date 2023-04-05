@@ -40,13 +40,16 @@ class LoraLoaderText:
             
         else:
             lora_path = folder_paths.get_full_path("loras", lora_name+'.safetensors')
-            print("[green]lora_path : [/green]"+ lora_path)
             if lora_path is None:
                 lora_path = folder_paths.get_full_path("loras", lora_name+'.ckpt')
-                print("[green]lora_path : [/green]"+ lora_path)
                 if lora_path is None:
                     print("[red]No lora_name[/red] : ", lora_name)
                     return (model, clip)
+                #else:
+                    #print("[green]lora_path : [/green]"+ lora_path)
+            #else:
+                #print("[green]lora_path : [/green]"+ lora_path)
+        print("[green]lora_path : [/green]"+ lora_path)
                 
         try:
             model_lora, clip_lora = comfy.sd.load_lora_for_models(model, clip, lora_path, strength_model, strength_clip)
