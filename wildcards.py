@@ -3,9 +3,9 @@ import random
 import re
 import os
 if __name__ == os.path.splitext(os.path.basename(__file__))[0] or __name__ =='__main__':
-    from ConsoleColor import print, console
+    from ConsoleColor import print, console, ccolor
 else:
-    from .ConsoleColor import print, console
+    from .ConsoleColor import print, console , ccolor
 #print(__file__)
 #print(os.path.basename(__file__))
 #print(os.getcwd())
@@ -155,7 +155,9 @@ class wildcards:
 
     # 실행기
     def run(text):
-
+        if text is None or type(text) is not str:
+            print("[red]text is not str : [/red]",text)
+            return None
         wildcards.card_load()
 
         #print(f"text : {text}")

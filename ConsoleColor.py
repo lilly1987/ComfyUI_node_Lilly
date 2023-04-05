@@ -22,6 +22,7 @@ custom_theme = Theme({
 })
 console = Console(theme=custom_theme)
 print=console.log
+ccolor="bright_yellow"
 """
 print("test", style="bold white on blue")
 print("test", style="bold green")
