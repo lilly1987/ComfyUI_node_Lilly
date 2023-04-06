@@ -43,7 +43,10 @@ class CheckpointLoaderSimpleText:
         print(f"ckpt_path",ckpt_path)
         if ckpt_path is None:
             print(f"{ckpt_name} is none")
-            (name,fullpath)=filenameget(os.path.join(models_dir, "checkpoints")+"/**/"+ckpt_name+"*.safetensors")
+            if ckpt_name.endswith(".safetensors") or ckpt_name.endswith(".ckpt"):
+                (name,fullpath)=filenameget(os.path.join(models_dir, "checkpoints")+"/**/"+ckpt_name)
+            else:
+                (name,fullpath)=filenameget(os.path.join(models_dir, "checkpoints")+"/**/"+ckpt_name+"*.safetensors")
             if fullpath is None:
                 print(f"{name} is none")
                 return 
