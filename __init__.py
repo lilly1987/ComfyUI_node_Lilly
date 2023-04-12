@@ -93,6 +93,7 @@ if __name__ == "ComfyUI_node_Lilly" :
     add("LoraLoaderTextRandom")
     add("Random_Sampler")
     add("VAELoaderDecode")
+    add("VAELoaderText")
     add("SimpleSampler",["SimpleSampler","SimpleSamplerVAE"])
     add("SaveImageSimple")
     add("TextWildcards")
