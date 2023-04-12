@@ -30,4 +30,4 @@ class TextWildcards:
         print(f"[green]text : [/green]",text)
         r=wildcards.run(text)
         print(f"[green]result : [/green]",r)
-        return ([r, r], )
+        return (r, r)
