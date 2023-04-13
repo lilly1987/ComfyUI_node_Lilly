@@ -108,6 +108,13 @@ wildcards.run("{9$$-$$a|b|c}",True)
 
 ![SimpleSamplerVAE](https://user-images.githubusercontent.com/20321215/229341040-72d422d5-7904-41c3-a0e7-ac256ea40d0e.png)
 
+### VAELoaderText , LoraLoaderText , CheckpointLoaderSimpleText
+
+- support file name Wildcard(?*)
+
+![2023-04-13 23 07 29](https://user-images.githubusercontent.com/20321215/231785743-a77257b1-6932-4713-8b91-0614aeeb45e8.png)
+![2023-04-13 23 07 49](https://user-images.githubusercontent.com/20321215/231785748-b33b5d69-de00-4265-8fdb-405e61ab8758.png)
+
 
 ### random_sampler_node.py
 
