@@ -5,10 +5,10 @@ from folder_paths import *
 import random 
 import os
 if __name__ == os.path.splitext(os.path.basename(__file__))[0] :
-    from ConsoleColor import print, console
+    from ConsoleColor import print, console, ccolor
     from mypath import *
 else:
-    from .ConsoleColor import print, console
+    from .ConsoleColor import print, console, ccolor
     from .mypath import *
     
 #print(__file__)
@@ -35,27 +35,13 @@ class CheckpointLoaderSimpleText:
     CATEGORY = "loaders"
     
     def load_checkpoint(self, ckpt_name, output_vae=True, output_clip=True):
-        #ckpt_path =check_name_ckpt(name_split_choice(ckpt_name))
-        print(f"ckpt_name",ckpt_name)
-        ns=name_split_choice(ckpt_name)
-        print(f"ns",ns)
-        ckpt_path =get_full_path("checkpoints",ns)
-        print(f"ckpt_path",ckpt_path)
-        if ckpt_path is None:
-            print(f"{ckpt_name} is none")
-            if ckpt_name.endswith(".safetensors") or ckpt_name.endswith(".ckpt"):
-                (name,fullpath)=filenameget(os.path.join(models_dir, "checkpoints")+"/**/"+ckpt_name)
-            else:
-                (name,fullpath)=filenameget(os.path.join(models_dir, "checkpoints")+"/**/"+ckpt_name+"*.safetensors")
-            if fullpath is None:
-                print(f"{ckpt_name} is none")
-                return 
-            ckpt_path=fullpath
+        print(f"[{ccolor}]ckpt_name : [/{ccolor}]", ckpt_name)
+        ckpt_path=getFullPath(ckpt_name,"checkpoints")
         try:
             out = comfy.sd.load_checkpoint_guess_config(ckpt_path, output_vae=True, output_clip=True, embedding_directory=folder_paths.get_folder_paths("embeddings"))
             return out
         except Exception as e:
-            print("CheckpointLoaderSimpleText Exception : "+ e)
+            console.print_exception()
             return 
             
         

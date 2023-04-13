@@ -3,10 +3,10 @@ import comfy.sd
 import os
 from folder_paths import *
 if __name__ == os.path.splitext(os.path.basename(__file__))[0] :
-    from ConsoleColor import print, console
+    from ConsoleColor import print, console, ccolor
     from mypath import *
 else:
-    from .ConsoleColor import print, console
+    from .ConsoleColor import print, console, ccolor
     from .mypath import *
     
 class VAELoaderText:
@@ -25,21 +25,11 @@ class VAELoaderText:
 
     #TODO: scale factor?
     def load_vae(self, vae_name):
-        if os.path.isabs(vae_name):
-            vae_path=vae_name
-        else:
-            if vae_name.endswith('.safetensors') or vae_name.endswith('.pt') :
-                vae_path = folder_paths.get_full_path("vae", vae_name)
-            if vae_path is None:
-                print(f"{vae_name} is none")
-                if vae_name.endswith(".safetensors") or vae_name.endswith(".pt"):
-                    (name,fullpath)=filenameget(os.path.join(models_dir, "vae")+"/**/"+vae_name)
-                else:
-                    (name,fullpath)=filenameget(os.path.join(models_dir, "vae")+"/**/"+vae_name+"*.safetensors")
-                if fullpath is None:
-                    print(f"{vae_name} is none")
-                    return 
-                vae_path=fullpath
-            
-        vae = comfy.sd.VAE(ckpt_path=vae_path)
-        return (vae,)
+        print(f"[{ccolor}]vae_name : [/{ccolor}]", vae_name)
+        vae_path=getFullPath(vae_name,"vae")
+        try:
+            vae = comfy.sd.VAE(ckpt_path=vae_path)
+            return (vae,)
+        except Exception as e:
+            console.print_exception()
+            return 

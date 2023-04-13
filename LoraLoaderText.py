@@ -4,9 +4,11 @@ from nodes import *
 import folder_paths
 
 if __name__ == os.path.splitext(os.path.basename(__file__))[0] :
-    from ConsoleColor import print, console
+    from ConsoleColor import print, console, ccolor
+    from mypath import *
 else:
-    from .ConsoleColor import print, console
+    from .ConsoleColor import print, console, ccolor
+    from .mypath import *
 
 class LoraLoaderText:
     @classmethod
@@ -31,26 +33,15 @@ class LoraLoaderText:
 
     def load_lora(self, model, clip, lora_name, strength_model, strength_clip):
         
-        if lora_name is None or lora_name =="":
+        print(f"[{ccolor}]lora_name : [/{ccolor}]", lora_name)
+        if lora_name is None or lora_name =="" :
             print("[red]No lora_name[/red] : ", lora_name)
-            return (strength_model, strength_clip)
-        
-        if lora_name.endswith('.safetensors') or lora_name.endswith('.ckpt') :
-            lora_path = folder_paths.get_full_path("loras", lora_name)
+            return (model, clip)
             
-        else:
-            lora_path = folder_paths.get_full_path("loras", lora_name+'.safetensors')
-            if lora_path is None:
-                lora_path = folder_paths.get_full_path("loras", lora_name+'.ckpt')
-                if lora_path is None:
-                    print("[red]No lora_name[/red] : ", lora_name)
-                    return (model, clip)
-                #else:
-                    #print("[green]lora_path : [/green]"+ lora_path)
-            #else:
-                #print("[green]lora_path : [/green]"+ lora_path)
-        print("[green]lora_path : [/green]"+ lora_path)
-                
+        lora_path=getFullPath(lora_name,"lora")
+        if lora_path is None:
+            print("[red]No lora_path of lora_name [/red] : ", lora_name)
+            return (model, clip)
         try:
             model_lora, clip_lora = comfy.sd.load_lora_for_models(model, clip, lora_path, strength_model, strength_clip)
             return (model_lora, clip_lora)

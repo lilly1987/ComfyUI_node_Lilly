@@ -3,6 +3,7 @@ import json
 import ast
 import os, glob
 import random
+from folder_paths import *
 if __name__ == os.path.splitext(os.path.basename(__file__))[0] :
     from ConsoleColor import print, console
 else:
@@ -79,3 +80,33 @@ def filenameget(v_path):
     name=os.path.basename(fullpath)
     #r_path=[os.path.basename(fullpath) for fullpath in fullpaths]
     return (name,fullpath)
+
+# "test","vae",["pt","safetensors"]
+def getFullPath(p,k,el=["safetensors","ckpt","pt"]):
+    if os.path.isabs(p):
+        path=p
+    else:
+        path=os.path.join(models_dir,k+"/**/",p)
+    #print(f"path : ", path)
+    t=False
+    for e in el:
+        if p.endswith('.'+e):
+            t=True
+            break
+    if t:
+        files=glob.glob(path, recursive=True)
+    else:
+        for e in el:
+            t=path+"."+e
+            #print(f"t : ", t)
+            files=glob.glob(t, recursive=True)
+            if len(files):
+                break
+    result=None
+    #print(f"files : ", files)
+    if len(files):
+        result=random.choice(files)
+        print(f"result : ", result)
+    else:
+        print("[red]No file in path[/red] : ", path)
+    return result
