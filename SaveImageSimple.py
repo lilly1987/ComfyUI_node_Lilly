@@ -2,6 +2,7 @@ from PIL import Image
 from PIL.PngImagePlugin import PngInfo
 import numpy as np
 import json
+import re
 
 import time
 
@@ -44,6 +45,7 @@ class SaveImageSimple:
         #print("outputdir : " + outputdir , Colors.CYAN)
 
         #print("len(images) : " + str(len(images)) , Colors.CYAN)
+        filename_prefix=re.sub(r"[*/]", "",filename_prefix)
         filename_prefix+=time.strftime('_%Y%m%d_%H%M%S')
         results = list()
         cnt=1
