@@ -45,7 +45,7 @@ class SaveImageSimple:
         #print("outputdir : " + outputdir , Colors.CYAN)
 
         #print("len(images) : " + str(len(images)) , Colors.CYAN)
-        filename_prefix=re.sub(r"[*/]", "",filename_prefix)
+        filename_prefix=re.sub(r"[*]", "",filename_prefix)
         filename_prefix+=time.strftime('_%Y%m%d_%H%M%S')
         results = list()
         cnt=1
