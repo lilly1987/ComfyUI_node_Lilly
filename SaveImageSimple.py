@@ -60,7 +60,7 @@ class SaveImageSimple:
                 for x in extra_pnginfo:
                     metadata.add_text(x, json.dumps(extra_pnginfo[x]))
             if not os.path.exists(outputdir):
-                print("makedirs  : " + outputdir , Colors.CYAN)
+                print("makedirs  : " + outputdir )
                 os.makedirs(outputdir)            
             filename=filename_prefix+f"_{cnt:05}_.png"
             filename=os.path.join(outputdir, filename)
