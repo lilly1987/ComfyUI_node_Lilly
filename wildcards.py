@@ -175,9 +175,10 @@ class wildcards:
 #print(__name__)
 #if __name__ == '__main__' :
     # 테스트용
-test="{3$$a1|{b2|c3|}|d4|{-$$|f|g}|{-2$$h||i}|{1-$$j|k|}}/{$$l|m|}/{0$$n|}/{9$$-$$a|b|c}/{9$$ {and|or} $$a|b|c}"
-print("[green]wildcards test : [/green]",wildcards.run(test),style="reset")
+#test="{3$$a1|{b2|c3|}|d4|{-$$|f|g}|{-2$$h||i}|{1-$$j|k|}}/{$$l|m|}/{0$$n|}/{9$$-$$a|b|c}/{9$$ {and|or} $$a|b|c}"
+#print("[green]wildcards test : [/green]",wildcards.run(test),style="reset")
 #print("wildcards test : "+wildcards.run("{9$$a|b}"))
 #print("[green]wildcards test : [/green]",wildcards.run("__my__"))
-print("wildcards test : "+wildcards.run("{9$$-$$a|b|c}"))
-print("wildcards test : "+wildcards.run("{9$$ {and|or} $$a|b|c}"))
+#print("wildcards test : "+wildcards.run("{9$$-$$a|b|c}"))
+#print("wildcards test : "+wildcards.run("{9$$ {and|or} $$a|b|c}"))
+print("wildcards test : "+wildcards.run("{{slender,|} {nature,|} {curvy,|} {thin,|} {narrow,|} {slim,|} {mini,|} {little,|}| {|very }{-$$ $$thin|slender|narrow|slim|little|skinny|mini} body, }"))

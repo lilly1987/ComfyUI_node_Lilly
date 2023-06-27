@@ -38,7 +38,7 @@ class LoraLoaderText:
             print("[red]No lora_name[/red] : ", lora_name)
             return (model, clip)
             
-        lora_path=getFullPath(lora_name,"lora")
+        lora_path=getFullPath(lora_name,"loras")
         if lora_path is None:
             print("[red]No lora_path of lora_name [/red] : ", lora_name)
             return (model, clip)

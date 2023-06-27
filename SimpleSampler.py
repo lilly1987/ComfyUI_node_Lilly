@@ -27,6 +27,8 @@ import numpy as np
 #print(f"SimpleSampler __file__ {os.path.splitext(os.path.basename(__file__))[0]}")
 
 import os
+
+
 if __name__ == os.path.splitext(os.path.basename(__file__))[0] or __name__ =='__main__':
     from ConsoleColor import print, console
     from wildcards import wildcards
@@ -37,18 +39,18 @@ else:
 #print(os.path.basename(__file__))
 
 #----------------------------
+wildcardsOn=True
 # wildcards support check
-wildcardsOn=False
-try:
-    from wildcards import *
-    wildcardsOn=True
-    #wildcards.card_path=os.path.dirname(__file__)+"\\..\\wildcards\\**\\*.txt"
-    print(f"import wildcards succ", style="bold GREEN" )
-except:
-    print(f"import wildcards fail", style="bold RED")
-    wildcardsOn=False
-    err_msg = traceback.format_exc()
-    print(err_msg)
+#wildcardsOn=False
+#try:
+#    wildcardsOn=True
+#    #wildcards.card_path=os.path.dirname(__file__)+"\\..\\wildcards\\**\\*.txt"
+#    print(f"import wildcards succ", style="bold GREEN" )
+#except:
+#    print(f"import wildcards fail", style="bold RED")
+#    wildcardsOn=False
+#    err_msg = traceback.format_exc()
+#    print(err_msg)
     
     
 def encode(clip, text):    
