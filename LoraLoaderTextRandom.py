@@ -48,18 +48,41 @@ class LoraLoaderTextRandom:
         strength_model=random.uniform(min(strength_model_min,strength_model_max),max(strength_model_min,strength_model_max)) 
         strength_clip=random.uniform(min(strength_clip_min,strength_clip_max),max(strength_clip_min,strength_clip_max)) 
 
-        lora_path =check_name_pt("loras",name_split_choice(lora_name))
-        if lora_path is None:
-            print(f"LoraLoaderTextRandom : {lora_name} is none")
+        print(f"[{ccolor}]lora_name : [/{ccolor}]", lora_name)
+        if strength_model == 0 and strength_clip == 0:
+            print("[red]strength_model,strength_clip 0[/red] : ", lora_name)
             return (model, clip)
-        print(f"LoraLoaderTextRandom : {lora_path} ")
+            
+        if lora_name is None or lora_name =="" :
+            print("[red]No lora_name[/red] : ", lora_name)
+            return (model, clip)
+            
+        lora_path = folder_paths.get_full_path("loras", lora_name)
+        if lora_path is None:
+            #print("[red]No lora_path of lora_name [/red] : ", lora_name)
+            lora_path=getFullPath(lora_name,"loras")
+            if lora_path is None:
+                print("[red]No lora_path of lora_name [/red] : ", lora_name)
+                return (model, clip)
+            
+        lora = None
+        if self.loaded_lora is not None:
+            if self.loaded_lora[0] == lora_path:
+                lora = self.loaded_lora[1]
+            else:
+                del self.loaded_lora
+
+        if lora is None:
+            lora = comfy.utils.load_torch_file(lora_path, safe_load=True)
+            self.loaded_lora = (lora_path, lora)
+        
+        # =========================================
+        
         try:
             model_lora, clip_lora = comfy.sd.load_lora_for_models(model, clip, lora_path, strength_model, strength_clip)
             return (model_lora, clip_lora)
         except Exception as e:
-            print(f"LoraLoaderTextRandom Exception : {e}" )
-            err_msg = traceback.format_exc()
-            print(err_msg)
+            console.print_exception()
             return (model, clip)
 
 #NODE_CLASS_MAPPINGS = {
