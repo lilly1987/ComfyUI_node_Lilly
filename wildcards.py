@@ -136,8 +136,8 @@ class wildcards:
         #print(f"files : {files}")
         
         for file in files:
-            basename = os.path.basename(file)
-            file_name = os.path.splitext(basename)[0]
+            basename = os.path.relpath(file, os.path.dirname(__file__))
+            file_name = os.path.splitext(basename)[0].replace("../../wildcards/", "")
             if not file_name in cards:
                 cards[file_name]=[]
             #print(f"file_name : {file_name}")
