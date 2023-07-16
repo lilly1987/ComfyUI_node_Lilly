@@ -14,7 +14,7 @@ else:
 class wildcards:
 
     # 가져올 파일 목록
-    card_path=os.path.dirname(__file__)+"\\..\\..\\wildcards\\**\\*.txt"
+    card_path=os.path.dirname(__file__)+"/../../wildcards/**/*.txt"
     #card_path=f"{os.getcwd()}\\wildcards\\**\\*.txt"
     print(f"wildcards card_path : ", card_path , style="bold CYAN")
 
