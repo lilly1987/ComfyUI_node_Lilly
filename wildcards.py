@@ -136,9 +136,16 @@ class wildcards:
         #print(f"files : {files}")
         
         for file in files:
-            basename = os.path.basename(file)
+            basenameAll = os.path.basename(file)
             basename = os.path.relpath(file, os.path.dirname(__file__)).replace("\\", "/").replace("../../wildcards/", "")
-            file_name = os.path.splitext(basename)[0]
+            #print(f"basenameAll : {basenameAll}")
+            #print(f"basename : {basename}")
+            file_nameAll = os.path.splitext(basenameAll)[0]
+            file_name = "/"+os.path.splitext(basename)[0]
+            #print(f"file_nameAll : {file_nameAll}")
+            #print(f"file_name : {file_name}")
+            if not file_nameAll in cards:
+                cards[file_nameAll]=[]
             if not file_name in cards:
                 cards[file_name]=[]
             #print(f"file_name : {file_name}")
@@ -149,11 +156,12 @@ class wildcards:
                 # 주석 빈줄 제외
                 if line.startswith("#") or len(line)==0:
                     continue
+                cards[file_nameAll]+=[line]
                 cards[file_name]+=[line]
                 #print(f"line : {line}")
         wildcards.cards=cards
         print(f"[cyan]cards file count : [/cyan]", len(wildcards.cards))
-        #print(f"cards : {cards.keys()}")
+        print(f"cards : {cards.keys()}")
         wildcards.is_card_Load=True
 
     # 실행기
