@@ -14,7 +14,7 @@ else:
 class wildcards:
 
     # 가져올 파일 목록
-    card_path=os.path.dirname(__file__)+"\\..\\..\\wildcards\\**\\*.txt"
+    card_path = os.path.join(os.path.dirname(__file__), "..", "..", "wildcards", "**", "*.txt")
     #card_path=f"{os.getcwd()}\\wildcards\\**\\*.txt"
     print(f"wildcards card_path : ", card_path , style="bold CYAN")
 
@@ -137,6 +137,7 @@ class wildcards:
         
         for file in files:
             basename = os.path.basename(file)
+            basename = os.path.relpath(file, os.path.dirname(__file__)).replace("\\", "/").replace("../../wildcards/", "")
             file_name = os.path.splitext(basename)[0]
             if not file_name in cards:
                 cards[file_name]=[]
