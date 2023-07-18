@@ -48,6 +48,15 @@ ex : {3$$a1|{b2|c3|}|d4|{-$$|f|g}|{-2$$h||i}|{1-$$j|k|}}/{$$l|m|}/{0$$n|}
 - __b__ to 1 or 2
 - __/b__ to 2
 - __/a/b__ to 1
+- __?b__ to 2
+- __*__ to 1 or 2
+
+### filename pattern matching
+- \* is matches everything
+- ? is matches any single character
+- \[seq\] is matches any character in seq
+- \[!seq\] is matches any character not in seq
+- reference https://docs.python.org/3/library/fnmatch.html
 
 ### run sample
 
