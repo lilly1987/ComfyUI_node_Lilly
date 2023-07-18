@@ -69,7 +69,7 @@ print(w.run("a{__b__|{c|}|{__d__|e|}|f|}g____ __my__"))
 
 
 
-### txt file (UTF8)
+### txt file (supports .txt files in different encodings.)
 from
 ```
 # 주석 comment

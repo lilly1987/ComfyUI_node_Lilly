@@ -1,7 +1,10 @@
-import glob, sys
+import os
+import glob
+import sys
 import random
 import re
-import os
+import fnmatch
+
 if __name__ == os.path.splitext(os.path.basename(__file__))[0] or __name__ =='__main__':
     from ConsoleColor import print, console, ccolor
 else:
@@ -22,6 +25,7 @@ if missing:
     subprocess.check_call([python, '-m', 'pip', 'install', *missing], stdout=subprocess.DEVNULL)
 
 import chardet
+
 
 # ============================================================
 class wildcards:
@@ -114,12 +118,16 @@ class wildcards:
 
     # 카드 중에서 가져오기
     def card(match):
-        #print(f"card i : {match.group(2)}")
-        if match.group(2) in wildcards.cards :
-            r=random.choice(wildcards.cards[match.group(2)])        
+        #print(f"card in  : {match.group(2)}")
+        lst=fnmatch.filter(wildcards.cards, match.group(2))
+        if len(lst)>0:
+            #print(f"card lst : {lst}")
+            cd=random.choice(lst)
+            #print(f"card get : {cd}")
+            r=random.choice(wildcards.cards[cd])        
         else :    
             r= match.group(2)
-        #print(f"card r : {r}")
+        #print(f"card out : {r}")
         return r
         
 
@@ -207,6 +215,9 @@ class wildcards:
 #print("wildcards test : "+wildcards.run("{9$$-$$a|b|c}"))
 #print("wildcards test : "+wildcards.run("{9$$ {and|or} $$a|b|c}"))
 #print("wildcards test : "+wildcards.run("{{slender,|} {nature,|} {curvy,|} {thin,|} {narrow,|} {slim,|} {mini,|} {little,|}| {|very }{-$$ $$thin|slender|narrow|slim|little|skinny|mini} body, }"))
+print("wildcards test : "+wildcards.run("__aest__"))
+print("wildcards test : "+wildcards.run("__*test__"))
+print("wildcards test : "+wildcards.run("__?est__"))
 print("wildcards test : "+wildcards.run("__test__"))
 print("wildcards test : "+wildcards.run("__/test__"))
 print("wildcards test : "+wildcards.run("__/0/test__"))
