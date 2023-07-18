@@ -161,7 +161,7 @@ class wildcards:
                 #print(f"line : {line}")
         wildcards.cards=cards
         print(f"[cyan]cards file count : [/cyan]", len(wildcards.cards))
-        print(f"cards : {cards.keys()}")
+        #print(f"cards : {cards.keys()}")
         wildcards.is_card_Load=True
 
     # 실행기
@@ -190,4 +190,7 @@ class wildcards:
 #print("[green]wildcards test : [/green]",wildcards.run("__my__"))
 #print("wildcards test : "+wildcards.run("{9$$-$$a|b|c}"))
 #print("wildcards test : "+wildcards.run("{9$$ {and|or} $$a|b|c}"))
-print("wildcards test : "+wildcards.run("{{slender,|} {nature,|} {curvy,|} {thin,|} {narrow,|} {slim,|} {mini,|} {little,|}| {|very }{-$$ $$thin|slender|narrow|slim|little|skinny|mini} body, }"))
+#print("wildcards test : "+wildcards.run("{{slender,|} {nature,|} {curvy,|} {thin,|} {narrow,|} {slim,|} {mini,|} {little,|}| {|very }{-$$ $$thin|slender|narrow|slim|little|skinny|mini} body, }"))
+print("wildcards test : "+wildcards.run("__test__"))
+print("wildcards test : "+wildcards.run("__/test__"))
+print("wildcards test : "+wildcards.run("__/0/test__"))
