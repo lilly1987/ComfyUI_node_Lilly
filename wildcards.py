@@ -10,6 +10,19 @@ else:
 #print(os.path.basename(__file__))
 #print(os.getcwd())
 
+import subprocess
+import pkg_resources
+
+required  = {'chardet'}
+installed = {pkg.key for pkg in pkg_resources.working_set}
+missing   = required - installed
+
+if missing:
+    python = sys.executable
+    subprocess.check_call([python, '-m', 'pip', 'install', *missing], stdout=subprocess.DEVNULL)
+
+import chardet
+
 # ============================================================
 class wildcards:
 
@@ -149,16 +162,19 @@ class wildcards:
             if not file_name in cards:
                 cards[file_name]=[]
             #print(f"file_name : {file_name}")
-            f = open(file, 'r', encoding='UTF8')
-            lines = f.readlines()
-            for line in lines:
-                line=line.strip()
-                # 주석 빈줄 제외
-                if line.startswith("#") or len(line)==0:
-                    continue
-                cards[file_nameAll]+=[line]
-                cards[file_name]+=[line]
-                #print(f"line : {line}")
+            with open(file, "rb") as f:
+                raw_data = f.read()
+                encoding = chardet.detect(raw_data)["encoding"]
+            with open(file, "r", encoding=encoding) as f:
+                lines = f.readlines()
+                for line in lines:
+                    line=line.strip()
+                    # 주석 빈줄 제외
+                    if line.startswith("#") or len(line)==0:
+                        continue
+                    cards[file_nameAll]+=[line]
+                    cards[file_name]+=[line]
+                    #print(f"line : {line}")
         wildcards.cards=cards
         print(f"[cyan]cards file count : [/cyan]", len(wildcards.cards))
         #print(f"cards : {cards.keys()}")
@@ -166,7 +182,7 @@ class wildcards:
 
     # 실행기
     def run(text,load=False):
-        if text is None or type(text) is not str:
+        if text is None or not isinstance(text, str):
             print("[red]text is not str : [/red]",text)
             return None
         if not wildcards.is_card_Load or load:
