@@ -2,19 +2,25 @@
 
 ## install
 
-ComfyUI_windows_portable\ComfyUI\custom_nodes\ComfyUI_node_Lilly
+Go to ./custom_nodes and clone git repo:
+
+```
+cd ./custom_nodes
+git clone https://github.com/kuriot/ComfyUI_node_Lilly.git
+```
+or https://github.com/lilly1987/ComfyUI_node_Lilly/archive/refs/heads/main.zip install this like
 
 ![2023-03-22 05 54 43](https://user-images.githubusercontent.com/20321215/226738610-c042a51c-8e72-45de-b714-385eaac383af.png)
 
 
 ## wildcards
 
-### ex
+### ex - wildcard
 
-- form
+- form :  
 a{__b__|{c|}|{__d__|e|}|f|}g____ __my__
  
-- to
+- to :  
 aeg __quality_my__, __breasts__, { |__character_dress__|__dress_my__}, __shoulder__, {high heels,| } {choker,| } {<lora:__lora_lst__:__rora_num__>,| } NSFW, __NSFW_my__, { |__style_my__,}
 
 ```
@@ -28,7 +34,7 @@ ex : {3$$a1|{b2|c3|}|d4|{-$$|f|g}|{-2$$h||i}|{1-$$j|k|}}/{$$l|m|}/{0$$n|}
 {-$$a|b|c} -> {0-3$$a|b|c}  0-max
 ```
 
-### ex2
+### ex - wildcard text file use
 
 - ~/a/b.txt
 ```
@@ -61,18 +67,12 @@ w.card_path=os.path.dirname(__file__)+"\\wildcards\\**\\*.txt"
 print(w.run("a{__b__|{c|}|{__d__|e|}|f|}g____ __my__"))
 ```
 
-### 
 
-```
-wildcards.py # modul file
-wildcards/*.txt # wildcards file
-wildcards/**/*.txt # wildcards file
-```
 
 ### txt file (UTF8)
-
+from
 ```
-# 주석
+# 주석 comment
 a,b
 {b|c|__anotherfile__}
 __anotherfile__
