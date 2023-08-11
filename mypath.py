@@ -86,7 +86,7 @@ def getFullPath(p,k,el=["safetensors","ckpt","pt"]):
     if os.path.isabs(p):
         path=p
     else:
-        path=os.path.join(models_dir,k+"/**/",p)
+        path=os.path.join(models_dir,k,"**",p)
     #print(f"path : ", path)
     t=False
     for e in el:
