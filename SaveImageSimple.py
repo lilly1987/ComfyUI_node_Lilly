@@ -8,10 +8,10 @@ import time
 
 import os
 if __name__ == os.path.splitext(os.path.basename(__file__))[0] :
-    from ConsoleColor import print, console
+    #from ConsoleColor import print, console
     from mypath import *
 else:
-    from .ConsoleColor import print, console
+    #from .ConsoleColor import print, console
     from .mypath import *
 #print(__file__)
 #print(os.path.basename(__file__))

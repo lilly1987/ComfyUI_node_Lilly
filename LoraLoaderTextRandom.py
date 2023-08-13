@@ -4,10 +4,10 @@ from nodes import *
 import folder_paths
 import random
 if __name__ == os.path.splitext(os.path.basename(__file__))[0] :
-    from ConsoleColor import print, console
+    #from ConsoleColor import print, console
     from mypath import *
 else:
-    from .ConsoleColor import print, console
+    #from .ConsoleColor import print, console
     from .mypath import *
 
 class LoraLoaderTextRandom:
@@ -82,7 +82,7 @@ class LoraLoaderTextRandom:
             model_lora, clip_lora = comfy.sd.load_lora_for_models(model, clip, lora_path, strength_model, strength_clip)
             return (model_lora, clip_lora)
         except Exception as e:
-            console.print_exception()
+            print(f"An exception occurred:", e)
             return (model, clip)
 
 #NODE_CLASS_MAPPINGS = {
