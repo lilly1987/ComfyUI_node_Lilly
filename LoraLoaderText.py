@@ -4,10 +4,10 @@ from nodes import *
 import folder_paths
 
 if __name__ == os.path.splitext(os.path.basename(__file__))[0] :
-    from ConsoleColor import print, console, ccolor
+    #from ConsoleColor import print, console, ccolor
     from mypath import *
 else:
-    from .ConsoleColor import print, console, ccolor
+    #from .ConsoleColor import print, console, ccolor
     from .mypath import *
 
 class LoraLoaderText:

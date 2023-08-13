@@ -2,21 +2,21 @@ import sys
 import os
 
 
-print(f"__name__ : {__name__}")
-print(f"__file__ : {__file__}")
-print(f"os.path.basename(__file__) : {os.path.basename(__file__)}")
-print(f"os.path.splitext(os.path.basename(__file__))[0] : {os.path.splitext(os.path.basename(__file__))[0]}")
+#print(f"__name__ : {__name__}")
+#print(f"__file__ : {__file__}")
+#print(f"os.path.basename(__file__) : {os.path.basename(__file__)}")
+#print(f"os.path.splitext(os.path.basename(__file__))[0] : {os.path.splitext(os.path.basename(__file__))[0]}")
 #print(f"os.path.basename(__file__) : {os.path.basename('/ComfyUI_windows_portable/ComfyUI/custom_nodes/ComfyUI_node_Lilly/__init__.py')}")
 #print(f"os.path.splitext(os.path.basename(__file__))[0] : {os.path.splitext(os.path.basename('/ComfyUI_windows_portable/ComfyUI/custom_nodes/ComfyUI_node_Lilly/__init__.py'))[0]}")
 
-wd = os.getcwd()
-print("working directory : ", wd)
+#wd = os.getcwd()
+#print("working directory : ", wd)
 
-if __name__ == os.path.splitext(os.path.basename(__file__))[0] or __name__ =='__main__':    
-    from ConsoleColor import print, console
+#if __name__ == os.path.splitext(os.path.basename(__file__))[0] or __name__ =='__main__':    
+    #from ConsoleColor import print, console
     #md="custom_nodes.ComfyUI_node_Lilly."
-else:
-    from .ConsoleColor import print, console
+#else:
+    #from .ConsoleColor import print, console
     #md="custom_nodes.ComfyUI_node_Lilly."
 md="custom_nodes.ComfyUI_node_Lilly."
 #print(__file__)
@@ -80,11 +80,14 @@ if __name__ == "ComfyUI_node_Lilly" :
                 for c in clist:
                     NODE_CLASS_MAPPINGS[c]=eval(f"{md}{name}.{c}")
             
-            print(f"Load ok   : {name}", style="bold green")
-        except Exception:
-            console.print_exception()
+            print(f"Load ok   : {name}")
+        except Exception as e:
+            print(f"An exception occurred:", e)
+            #console.print_exception()
 
-    console.rule(f" init start ", style="bold green")
+    #console.rule(f" init start ", style="bold green")
+    #print(f" init start ")
+    print(f"### Loading: ComfyUI-node-Lilly")
 
     add("CheckpointLoaderRandom")
     add("CheckpointLoaderSimpleText")
@@ -99,4 +102,5 @@ if __name__ == "ComfyUI_node_Lilly" :
     add("TextWildcards")
     #add("test")
 
-    console.rule(" init end ", style="bold green")
+    #console.rule(" init end ", style="bold green")
+    #print(f" init end ")

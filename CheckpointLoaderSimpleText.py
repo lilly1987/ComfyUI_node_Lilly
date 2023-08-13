@@ -5,10 +5,10 @@ from folder_paths import *
 import random 
 import os
 if __name__ == os.path.splitext(os.path.basename(__file__))[0] :
-    from ConsoleColor import print, console, ccolor
+    #from ConsoleColor import print, console, ccolor
     from mypath import *
 else:
-    from .ConsoleColor import print, console, ccolor
+    #from .ConsoleColor import print, console, ccolor
     from .mypath import *
     
 #print(__file__)

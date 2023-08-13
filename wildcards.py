@@ -5,10 +5,10 @@ import random
 import re
 import fnmatch
 
-if __name__ == os.path.splitext(os.path.basename(__file__))[0] or __name__ =='__main__':
-    from ConsoleColor import print, console, ccolor
-else:
-    from .ConsoleColor import print, console , ccolor
+#if __name__ == os.path.splitext(os.path.basename(__file__))[0] or __name__ =='__main__':
+    #from ConsoleColor import print, console, ccolor
+#else:
+    #from .ConsoleColor import print, console , ccolor
 #print(__file__)
 #print(os.path.basename(__file__))
 #print(os.getcwd())
@@ -33,7 +33,8 @@ class wildcards:
     # 가져올 파일 목록
     card_path = os.path.join(os.path.dirname(__file__), "..", "..", "wildcards", "**", "*.txt")
     #card_path=f"{os.getcwd()}\\wildcards\\**\\*.txt"
-    print(f"wildcards card_path : ", card_path , style="bold CYAN")
+    #print(f"wildcards card_path : ", card_path , style="bold CYAN")
+    print(f"wildcards card_path : ", card_path)
 
     # 정규식
     #resub  = re.compile(r"(\{)([^\{\}]*)(\})")
