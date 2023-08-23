@@ -47,7 +47,7 @@ class LoraLoaderText:
             
         lora_path = folder_paths.get_full_path("loras", lora_name)
         if lora_path is None:
-            #print("[red]No lora_path of lora_name [/red] : ", lora_name)
+            print("[{ccolor}]No lora_path of lora_name [/{ccolor}] : ", lora_name)
             lora_path=getFullPath(lora_name,"loras")
             if lora_path is None:
                 print("[red]No lora_path of lora_name [/red] : ", lora_name)
