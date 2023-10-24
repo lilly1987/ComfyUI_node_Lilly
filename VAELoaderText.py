@@ -27,8 +27,11 @@ class VAELoaderText:
     def load_vae(self, vae_name):
         print(f"[{ccolor}]vae_name : [/{ccolor}]", vae_name)
         vae_path=getFullPath(vae_name,"vae")
+        
+        
         try:
-            vae = comfy.sd.VAE(ckpt_path=vae_path)
+            sd = comfy.utils.load_torch_file(vae_path)
+            vae = comfy.sd.VAE(sd=sd)
             return (vae,)
         except Exception as e:
             console.print_exception()
