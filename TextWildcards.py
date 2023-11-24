@@ -15,7 +15,7 @@ class TextWildcards:
     def INPUT_TYPES(s):
         return {
         "required": {
-            "text": ("STRING", {"multiline": True}),
+            "text": ("STRING", {"multiline": True, "dynamicPrompts": False}),
             "seed": ("INT", {"default": 0, "min": 0, "max": 0xffffffffffffffff}),
             
         }
