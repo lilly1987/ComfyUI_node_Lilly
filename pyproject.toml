@@ -1,0 +1,14 @@
+[project]
+name = "comfyui_node_lilly"
+description = "These custom nodes provides a feature to insert arbitrary inputs through wildcards in the prompt. Additionally, this tool provides features that help simplify workflows, such as VAELoaderDecoder and SimplerSample."
+version = "1.0.0"
+license = "LICENSE"
+
+[project.urls]
+Repository = "https://github.com/lilly1987/ComfyUI_node_Lilly"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "ComfyUI_node_Lilly"
+Icon = ""
