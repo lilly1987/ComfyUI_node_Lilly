@@ -1,5 +1,9 @@
 # ComfyUI-node-Lilly
 
+## No longer maintained.
+
+i use https://github.com/ltdrdata/ComfyUI-extension-tutorials/blob/Main/ComfyUI-Impact-Pack/tutorial/ImpactWildcard.md
+
 ## install
 
 Go to ./custom_nodes and clone git repo:
